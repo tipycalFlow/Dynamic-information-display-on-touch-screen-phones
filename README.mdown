@@ -12,8 +12,9 @@ I've made two apps to demonstrate the functional benefit of both these implement
 is pretty neat and is definitely the better way out amongst the two. This overrides the landscape mode though, 
 so extra sensors would be required for built-in implementation in new devices. This technique can be used in the 
 table views of your custom app! Just tilt the phone to make the text flow like 'water in a plate'. I've taken an 
-indentation based on trial and error. Please change it according to your requirements. 
+indentation based on trial and error. Changes can be made according to requirements.
 The alignment version needs no changes.
+The floating version is based on accelerometer inputs and the elements move around a lot more like the 'water in a plate' mentioned before.
 I've also uploaded a demo video at  (http://www.youtube.com/watch?v=PZBl6acZniE) .
 Further feedback is welcome!
 
