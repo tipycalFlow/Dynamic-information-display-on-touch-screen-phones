@@ -23,7 +23,7 @@
 {
     self.title = NSLocalizedString(@"Floating List", @"elements");
     accelerometerOn = false;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Start" style:UIBarButtonItemStylePlain target:self action:@selector(toggleAccelerometer)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Start float" style:UIBarButtonItemStylePlain target:self action:@selector(toggleAccelerometer)];
     indentationValue=0;
     gravityValue=0;
     list = [[NSMutableArray alloc] init];
@@ -45,19 +45,19 @@
         UIAccelerometer *accelerometer = [UIAccelerometer sharedAccelerometer];
         accelerometer.delegate = nil;
         accelerometerOn = false;
-        self.navigationItem.rightBarButtonItem.title = @"Start";
+        self.navigationItem.leftBarButtonItem.title = @"Start float";
     }
     else{
         UIAccelerometer *accelerometer = [UIAccelerometer sharedAccelerometer];
         accelerometer.delegate = self;
         accelerometer.updateInterval = 0.05;
         accelerometerOn = true;
-        self.navigationItem.rightBarButtonItem.title = @"Stop";
+        self.navigationItem.leftBarButtonItem.title = @"Stop float";
     }
 }
 
 - (void) viewDidAppear:(BOOL)animated{
-    [self toggleAccelerometer];
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -72,7 +72,6 @@
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
     // Use a basic low-pass filter to only keep the gravity in the accelerometer values for the X axis
     accelerationX = acceleration.x * kFilteringFactor + accelerationX * (1.0 - kFilteringFactor);
-    NSLog(@"accelerationX%f",accelerationX);
     
     gravityValue=accelerationX/2;
     [self.tableView reloadData];
@@ -90,12 +89,9 @@
     
     if((indentationValue + gravityValue)>=0){
         indentationValue += gravityValue;
-//        if (indentationValue>20 && (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone))
-//            indentationValue=20;
-//        if (indentationValue>20 && (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad))
-//            indentationValue=20;
-        if((width + indentationValue*16) <= (tableView.frame.size.width)+50){
-            cell.indentationLevel = indentationValue;
+//        NSLog(@"indentation%f",indentationValue);
+        if((width + ((int)indentationValue)*16) <= (tableView.frame.size.width)+40){
+            cell.indentationLevel = (int)indentationValue;
             cell.textLabel.textAlignment = UITextAlignmentLeft;
         }
         else{
