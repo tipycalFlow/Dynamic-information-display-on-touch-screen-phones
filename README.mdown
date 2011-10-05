@@ -18,7 +18,7 @@ The alignment version needs no changes.
 
 The floating version is based on accelerometer inputs and the elements move around a lot more like the 'water in a plate' mentioned before.
 
-I've also uploaded a demo video at  (http://www.youtube.com/watch?v=PZBl6acZniE) .
+I've also uploaded a demo video for the indentation version at  (http://www.youtube.com/watch?v=PZBl6acZniE) and for the floating version at (http://www.youtube.com/watch?v=EwMnIMac9s8)
 Further feedback is welcome!
 
 Licence:
