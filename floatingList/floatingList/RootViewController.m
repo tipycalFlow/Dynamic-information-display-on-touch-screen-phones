@@ -73,7 +73,7 @@
     // Use a basic low-pass filter to only keep the gravity in the accelerometer values for the X axis
     accelerationX = acceleration.x * kFilteringFactor + accelerationX * (1.0 - kFilteringFactor);
     
-    gravityValue=accelerationX/2;
+    gravityValue=accelerationX/2; //change this to increase/decrease the sensitivity of floatation with tilt angle
     [self.tableView reloadData];
 } 
 
