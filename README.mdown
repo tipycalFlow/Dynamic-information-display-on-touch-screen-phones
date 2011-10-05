@@ -1,7 +1,7 @@
 The idea is to use the accelerometer and other sensors to improve user's browsing experience by dynamically changing 
 the way information is displayed on finger based touch screen phones. As you know, capacitive touch screens offer a 
 better sensitivity over previous resistive ones but have an inherent disadvantage of the finger itself causing 
-disuption to the view of users. For eg, a user is scrolling through a list of items and reading them simultaneously. 
+disruption to the view of users. For eg, a user is scrolling through a list of items and reading them simultaneously. 
 If the user scrolls the device with the left hand, scrolling and reading is not as convenient to do as it is 
 with the right hand because the left-hand's finger obstructs the view and we read most languages from 
 left to right. As a result, the users end up shifting hands or fingers for a convenient view. 
