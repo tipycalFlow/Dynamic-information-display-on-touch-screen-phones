@@ -90,14 +90,18 @@
     
     if((indentationValue + gravityValue)>=0){
         indentationValue += gravityValue;
-        if (indentationValue>20)
-            indentationValue=20;
-        if((width + indentationValue*16) <= (tableView.frame.size.width )+50){
+//        if (indentationValue>20 && (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone))
+//            indentationValue=20;
+//        if (indentationValue>20 && (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad))
+//            indentationValue=20;
+        if((width + indentationValue*16) <= (tableView.frame.size.width)+50){
             cell.indentationLevel = indentationValue;
             cell.textLabel.textAlignment = UITextAlignmentLeft;
         }
-        else
+        else{
             cell.textLabel.textAlignment = UITextAlignmentRight;
+            indentationValue -= gravityValue;
+        }
     }
     
     cell.textLabel.text = [list objectAtIndex:(indexPath.row)%10];
