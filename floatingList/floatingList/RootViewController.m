@@ -23,7 +23,7 @@
 {
     self.title = NSLocalizedString(@"Floating List", @"elements");
     accelerometerOn = false;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Start" style:UIBarButtonItemStylePlain target:self action:@selector(toggleAccelerometer)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Start" style:UIBarButtonItemStylePlain target:self action:@selector(toggleAccelerometer)];
     indentationValue=0;
     gravityValue=0;
     list = [[NSMutableArray alloc] init];

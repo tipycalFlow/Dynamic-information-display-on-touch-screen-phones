@@ -16,6 +16,7 @@
 		18BB99501435E47D005C3F94 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BB994E1435E47C005C3F94 /* MainWindow.xib */; };
 		18BB99531435E47D005C3F94 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB99521435E47D005C3F94 /* RootViewController.m */; };
 		18BB99561435E47D005C3F94 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BB99541435E47D005C3F94 /* RootViewController.xib */; };
+		18E07C0F143C161200C837E7 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E07C0D143C161200C837E7 /* MainWindow-iPad.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		18BB99511435E47D005C3F94 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		18BB99521435E47D005C3F94 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		18BB99551435E47D005C3F94 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		18E07C0E143C161200C837E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		18BB99421435E47C005C3F94 /* floatingList */ = {
 			isa = PBXGroup;
 			children = (
+				18E07C0C143C161100C837E7 /* iPad */,
 				18BB994B1435E47C005C3F94 /* floatingListAppDelegate.h */,
 				18BB994C1435E47C005C3F94 /* floatingListAppDelegate.m */,
 				18BB994E1435E47C005C3F94 /* MainWindow.xib */,
@@ -99,6 +102,14 @@
 				18BB99491435E47C005C3F94 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		18E07C0C143C161100C837E7 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				18E07C0D143C161200C837E7 /* MainWindow-iPad.xib */,
+			);
+			name = iPad;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +162,7 @@
 				18BB99471435E47C005C3F94 /* InfoPlist.strings in Resources */,
 				18BB99501435E47D005C3F94 /* MainWindow.xib in Resources */,
 				18BB99561435E47D005C3F94 /* RootViewController.xib in Resources */,
+				18E07C0F143C161200C837E7 /* MainWindow-iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +204,14 @@
 				18BB99551435E47D005C3F94 /* en */,
 			);
 			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+		18E07C0D143C161200C837E7 /* MainWindow-iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18E07C0E143C161200C837E7 /* en */,
+			);
+			name = "MainWindow-iPad.xib";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -242,7 +262,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "floatingList/floatingList-Prefix.pch";
 				INFOPLIST_FILE = "floatingList/floatingList-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -255,7 +277,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "floatingList/floatingList-Prefix.pch";
 				INFOPLIST_FILE = "floatingList/floatingList-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
