@@ -20,6 +20,7 @@
     float gravityValue;
     float indentationValue;
     BOOL accelerometerOn;
+    BOOL alignedLeft;
 }
 - (void)toggleAccelerometer;
 
