@@ -13,11 +13,12 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #import "RootViewController.h"
+#import "myTableCell.h"
 
 @implementation RootViewController
 
 #define kFilteringFactor 0.05
-#define methodToUse 0
+#define methodToUse 1
 
 @synthesize list,gravityValue,indentationValue;
 @synthesize accelerationX;
@@ -27,7 +28,7 @@
     self.title = NSLocalizedString(@"Floating List", @"elements");
     accelerometerOn = false;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Start float" style:UIBarButtonItemStylePlain target:self action:@selector(toggleAccelerometer)];
-    indentationValue=0;
+    indentationValue=5;
     gravityValue=0;
     alignedLeft = true;
     list = [[NSMutableArray alloc] init];
@@ -78,7 +79,7 @@
     accelerationX = acceleration.x * kFilteringFactor + accelerationX * (1.0 - kFilteringFactor);
     
 #if(methodToUse)
-    gravityValue=accelerationX; //Increase/decrease this to increase/decrease the sensitivity of floatation with tilt angle
+    gravityValue=accelerationX*10; //Increase/decrease this to increase/decrease the sensitivity of floatation with tilt angle
 #else
     gravityValue=accelerationX/2;
 #endif
@@ -88,45 +89,41 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16.0];
-    int width = [[list objectAtIndex:(indexPath.row)%10] sizeWithFont:cell.textLabel.font].width ;
 
 // Two possible ways
-#if(methodToUse) // Uses setFrame: method
+#if(methodToUse) // Sub-classes UITableViewCell
+    
+    float originX;
     indentationValue += gravityValue;
     
-    // Limit indentationValue between table's bounds
-    if (indentationValue > tableView.frame.size.width){
-        indentationValue = tableView.frame.size.width;
+    int width = [[list objectAtIndex:(indexPath.row)%10] sizeWithFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0]].width ;
+    
+    // Limit indentationValue between table's bounds plus a margin of 5 points
+    if (indentationValue > tableView.frame.size.width - 5){
+        indentationValue = tableView.frame.size.width - 5;
         alignedLeft = false;
     }
-    else if(indentationValue < 0){
-        indentationValue=0;
+    else if(indentationValue < 5){
+        indentationValue=5;
         alignedLeft = true;
     }
     
-    if(alignedLeft){
-        if(indentationValue + width <= tableView.frame.size.width){
-            [cell.textLabel setFrame:CGRectMake((int)indentationValue, cell.textLabel.frame.origin.y, width, cell.textLabel.frame.size.height)];
-        }
+    if(alignedLeft)
+        if(indentationValue + width <= tableView.frame.size.width - 5)
+            originX = indentationValue;
         else
-            [cell.textLabel setFrame:CGRectMake(tableView.frame.size.width - width, cell.textLabel.frame.origin.y, width, cell.textLabel.frame.size.height)];
-    }
-    else{
-        if((indentationValue - width) >= 0){
-            [cell.textLabel setFrame:CGRectMake((int)indentationValue - width, cell.textLabel.frame.origin.y, width, cell.textLabel.frame.size.height)];
-        }
+            originX = tableView.frame.size.width - width - 5;
+    else
+        if((indentationValue - width) >= 5)
+            originX = indentationValue - width;
         else
-            [cell.textLabel setFrame:CGRectMake(0, cell.textLabel.frame.origin.y, width, cell.textLabel.frame.size.height)];
-    }
-#else // Uses alignment + indentation
+            originX = 5;
+    
+    myTableCell * mCell = [[myTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier origin:originX width:width];
+
+#else // Uses alignment + indentation without sub-classing UITableViewCell
     if((indentationValue + gravityValue)>=0){
         indentationValue += gravityValue;
-        //        NSLog(@"indentation%f",indentationValue);
         if((width + ((int)indentationValue)*16) <= (tableView.frame.size.width)+40){
             cell.indentationLevel = (int)indentationValue;
             cell.textLabel.textAlignment = UITextAlignmentLeft;
@@ -137,9 +134,9 @@
         }
     }
 #endif
-    NSLog(@"indentation%f",indentationValue);
-    cell.textLabel.text = [list objectAtIndex:(indexPath.row)%10];
-    return cell;
+    mCell.textLabel.text = [list objectAtIndex:(indexPath.row)%10];
+    mCell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16.0];
+    return mCell;
 }
 
 - (void)dealloc

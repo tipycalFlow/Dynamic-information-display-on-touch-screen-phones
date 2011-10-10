@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		188747D0144309FE004746B8 /* myTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188747CF144309FE004746B8 /* myTableCell.m */; };
 		18BB993D1435E47C005C3F94 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BB993C1435E47C005C3F94 /* UIKit.framework */; };
 		18BB993F1435E47C005C3F94 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BB993E1435E47C005C3F94 /* Foundation.framework */; };
 		18BB99411435E47C005C3F94 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BB99401435E47C005C3F94 /* CoreGraphics.framework */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		188747CE144309FE004746B8 /* myTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myTableCell.h; sourceTree = "<group>"; };
+		188747CF144309FE004746B8 /* myTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myTableCell.m; sourceTree = "<group>"; };
 		18BB99381435E47C005C3F94 /* floatingList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = floatingList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BB993C1435E47C005C3F94 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		18BB993E1435E47C005C3F94 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -88,6 +91,8 @@
 				18BB99511435E47D005C3F94 /* RootViewController.h */,
 				18BB99521435E47D005C3F94 /* RootViewController.m */,
 				18BB99541435E47D005C3F94 /* RootViewController.xib */,
+				188747CE144309FE004746B8 /* myTableCell.h */,
+				188747CF144309FE004746B8 /* myTableCell.m */,
 				18BB99431435E47C005C3F94 /* Supporting Files */,
 			);
 			path = floatingList;
@@ -176,6 +181,7 @@
 				18BB994A1435E47C005C3F94 /* main.m in Sources */,
 				18BB994D1435E47C005C3F94 /* floatingListAppDelegate.m in Sources */,
 				18BB99531435E47D005C3F94 /* RootViewController.m in Sources */,
+				188747D0144309FE004746B8 /* myTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,8 +237,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PROVISIONING_PROFILE = "03F5AAD4-5C56-4185-AE50-FCDC94701598";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03F5AAD4-5C56-4185-AE50-FCDC94701598";
+				PROVISIONING_PROFILE = "36D2D34F-5924-41B3-98C3-F876CEBDBEEA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "36D2D34F-5924-41B3-98C3-F876CEBDBEEA";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -249,8 +255,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "03F5AAD4-5C56-4185-AE50-FCDC94701598";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03F5AAD4-5C56-4185-AE50-FCDC94701598";
+				PROVISIONING_PROFILE = "36D2D34F-5924-41B3-98C3-F876CEBDBEEA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "36D2D34F-5924-41B3-98C3-F876CEBDBEEA";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
