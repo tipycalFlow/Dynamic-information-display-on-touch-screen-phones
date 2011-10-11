@@ -28,7 +28,11 @@
     self.title = NSLocalizedString(@"Floating List", @"elements");
     accelerometerOn = false;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Start float" style:UIBarButtonItemStylePlain target:self action:@selector(toggleAccelerometer)];
+#if(methodToUse)
     indentationValue=5;
+#else
+    indentationValue=0;
+#endif
     gravityValue=0;
     alignedLeft = true;
     list = [[NSMutableArray alloc] init];
