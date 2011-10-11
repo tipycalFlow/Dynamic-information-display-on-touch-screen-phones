@@ -86,13 +86,12 @@
     [self.tableView reloadData];
 } 
 
+// Two possible ways
+#if(methodToUse) // Sub-classes UITableViewCell, follows physics
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";    
-
-// Two possible ways
-#if(methodToUse) // Sub-classes UITableViewCell
-    
     float originX;
     indentationValue += gravityValue;
     
@@ -121,7 +120,25 @@
     
     myTableCell * mCell = [[myTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier origin:originX width:width];
 
+    mCell.textLabel.text = [list objectAtIndex:(indexPath.row)%10];
+    mCell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16.0];
+    return mCell;
+}
+
 #else // Uses alignment + indentation without sub-classing UITableViewCell
+// The physics of this method is wrong, though, because the elements are always
+// left-aligned when they're in the middle of the screen
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16.0];
+    int width = [[list objectAtIndex:(indexPath.row)%10] sizeWithFont:cell.textLabel.font].width ;
+    
     if((indentationValue + gravityValue)>=0){
         indentationValue += gravityValue;
         if((width + ((int)indentationValue)*16) <= (tableView.frame.size.width)+40){
@@ -133,11 +150,12 @@
             indentationValue -= gravityValue;
         }
     }
-#endif
-    mCell.textLabel.text = [list objectAtIndex:(indexPath.row)%10];
-    mCell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16.0];
-    return mCell;
+    
+    cell.textLabel.text = [list objectAtIndex:(indexPath.row)%10];
+    return cell;
 }
+
+#endif
 
 - (void)dealloc
 {
